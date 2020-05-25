@@ -36,8 +36,11 @@ install(TARGETS test_robot_hardware
 )
 
 if(BUILD_TESTING)
-  find_package(ament_lint_auto REQUIRED)
-  ament_lint_auto_find_test_dependencies()
+  # find_package(ament_lint_auto REQUIRED)
+  # list(APPEND AMENT_LINT_AUTO_EXCLUDE ament_cmake_uncrustify)
+  # ament_lint_auto_find_test_dependencies()
+
+  find_package(ament_cmake_gtest REQUIRED)
 
   ament_add_gtest(test_robot_hardware_interface test/test_robot_hardware_interface.cpp)
   if(TARGET test_robot_hardware_interface)

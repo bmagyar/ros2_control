@@ -50,8 +50,10 @@ install(DIRECTORY include/
   DESTINATION include)
 
 if(BUILD_TESTING)
-  find_package(ament_lint_auto REQUIRED)
-  ament_lint_auto_find_test_dependencies()
+  find_package(ament_cmake_gtest REQUIRED)
+
+  # find_package(ament_lint_auto REQUIRED)
+  # ament_lint_auto_find_test_dependencies()
 
   set(test_config_file ${CMAKE_CURRENT_SOURCE_DIR}/test/config/test_controller_config.yaml)
 
