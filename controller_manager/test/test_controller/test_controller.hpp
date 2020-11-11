@@ -27,8 +27,10 @@ namespace test_controller
 // indicating the node name under which the controller node
 // is being loaded.
 constexpr char TEST_CONTROLLER_NAME[] = "test_controller_name";
-// corresponds to the name listed within the pluginlib xml
-constexpr char TEST_CONTROLLER_CLASS_NAME[] = "controller_manager/test_controller";
+constexpr char TEST_CONTROLLER_TYPE[] = "test_controller";
+constexpr char DEFAULT_STR_PARAM_VALUE[] = "default_value";
+constexpr int DEFAULT_INT_PARAM_VALUE = 10;
+constexpr double DEFAULT_DOUBLE_PARAM_VALUE = M_PI;
 class TestController : public controller_interface::ControllerInterface
 {
 public:
@@ -58,6 +60,10 @@ public:
   CONTROLLER_MANAGER_PUBLIC
   rclcpp_lifecycle::node_interfaces::LifecycleNodeInterface::CallbackReturn
   on_configure(const rclcpp_lifecycle::State & previous_state) override;
+
+  controller_interface::return_type init(
+    std::weak_ptr<hardware_interface::RobotHardware> robot_hardware,
+    const std::string & controller_name) override;
 
   size_t internal_counter = 0;
 };
