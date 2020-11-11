@@ -134,6 +134,9 @@ TEST_F(TestControllerManager, controller_parameters) {
     std::launch::async, [this]() -> void {
       executor_->spin();
     });
+  // This sleep is needed to prevent a too fast test from ending before the
+  // executor has began to spin, which causes it to hang
+  std::this_thread::sleep_for(50ms);
 
   // controller_manager_parameter because it has no prefix
   // (and controller manager accepts all parameters)
