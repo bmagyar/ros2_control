@@ -13,6 +13,7 @@
 // limitations under the License.
 
 #include <gtest/gtest.h>
+#include <chrono>
 #include <memory>
 #include <string>
 #include <vector>
@@ -33,7 +34,7 @@ TEST_F(TestControllerManager, controller_lifecycle) {
   auto test_controller = std::make_shared<test_controller::TestController>();
   cm_->add_controller(
     test_controller, test_controller::TEST_CONTROLLER_NAME,
-    test_controller::TEST_CONTROLLER_CLASS_NAME);
+    test_controller::TEST_CONTROLLER_TYPE);
   EXPECT_EQ(1u, cm_->get_loaded_controllers().size());
   EXPECT_EQ(2, test_controller.use_count());
 
@@ -127,7 +128,7 @@ TEST_F(TestControllerManager, controller_lifecycle) {
 
 TEST_F(TestControllerManager, controller_parameters) {
   auto cm = std::make_shared<controller_manager::ControllerManager>(
-    robot_, executor_,
+    executor_,
     "test_controller_manager");
 
   auto executor_spin_future = std::async(

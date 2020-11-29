@@ -62,7 +62,6 @@ public:
   on_configure(const rclcpp_lifecycle::State & previous_state) override;
 
   controller_interface::return_type init(
-    std::weak_ptr<hardware_interface::RobotHardware> robot_hardware,
     const std::string & controller_name) override;
 
   size_t internal_counter = 0;
