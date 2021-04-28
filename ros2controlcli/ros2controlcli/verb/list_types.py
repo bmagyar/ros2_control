@@ -34,4 +34,5 @@ class ListTypesVerb(VerbExtension):
             types_and_classes = zip(response.types, response.base_classes)
             for c in types_and_classes:
                 print('{:70s} {}'.format(c[0], c[1]))
+
             return 0

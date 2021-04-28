@@ -35,6 +35,8 @@ class ReloadLibrariesVerb(VerbExtension):
         with NodeStrategy(args) as node:
             response = reload_controller_libraries(
                 node, args.controller_manager, force_kill=args.force_kill)
-            if response.ok:
-                return 'Reload successful'
-            return 'Error reloading libraries, check controller_manager logs'
+            if not response.ok:
+                return 'Error reloading libraries, check controller_manager logs'
+
+            print('Reload successful')
+            return 0

@@ -62,4 +62,6 @@ class SwitchVerb(VerbExtension):
                 args.switch_timeout)
             if not response.ok:
                 return 'Error switching controllers, check controller_manager logs'
-            return 'Successfully switched controllers'
+
+            print('Successfully switched controllers')
+            return 0

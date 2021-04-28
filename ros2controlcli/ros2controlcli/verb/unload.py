@@ -36,4 +36,6 @@ class UnloadVerb(VerbExtension):
             response = unload_controller(node, args.controller_manager, args.controller_name)
             if not response.ok:
                 return 'Error unloading controllers, check controller_manager logs'
-            return 'Successfully unloaded controller {}'.format(args.controller_name)
+
+            print('Successfully unloaded controller {}'.format(args.controller_name))
+            return 0
