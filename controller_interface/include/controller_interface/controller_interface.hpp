@@ -73,16 +73,13 @@ public:
   ControllerInterface() = default;
 
   CONTROLLER_INTERFACE_PUBLIC
-  virtual
-  ~ControllerInterface() = default;
+  virtual ~ControllerInterface() = default;
 
   CONTROLLER_INTERFACE_PUBLIC
-  virtual
-  InterfaceConfiguration command_interface_configuration() const = 0;
+  virtual InterfaceConfiguration command_interface_configuration() const = 0;
 
   CONTROLLER_INTERFACE_PUBLIC
-  virtual
-  InterfaceConfiguration state_interface_configuration() const = 0;
+  virtual InterfaceConfiguration state_interface_configuration() const = 0;
 
   CONTROLLER_INTERFACE_PUBLIC
   void assign_interfaces(
@@ -93,23 +90,16 @@ public:
   void release_interfaces();
 
   CONTROLLER_INTERFACE_PUBLIC
-  virtual
-  return_type
-  init(const std::string & controller_name);
+  virtual return_type init(const std::string & controller_name);
 
   CONTROLLER_INTERFACE_PUBLIC
-  virtual
-  return_type
-  init(const std::string & controller_name, rclcpp::NodeOptions & node_options);
+  virtual return_type init(const std::string & controller_name, rclcpp::NodeOptions & node_options);
 
   CONTROLLER_INTERFACE_PUBLIC
-  virtual
-  return_type
-  update() = 0;
+  virtual return_type update() = 0;
 
   CONTROLLER_INTERFACE_PUBLIC
-  std::shared_ptr<rclcpp::Node>
-  get_node();
+  std::shared_ptr<rclcpp::Node> get_node();
 
   /**
    * The methods below are a substitute to the LifecycleNode methods with the same name.
@@ -138,6 +128,9 @@ public:
 
   CONTROLLER_INTERFACE_PUBLIC
   const rclcpp_lifecycle::State & get_current_state() const;
+
+  CONTROLLER_INTERFACE_PUBLIC
+  int get_update_rate(){ return 0; } const;
 
 protected:
   std::vector<hardware_interface::LoanedCommandInterface> command_interfaces_;

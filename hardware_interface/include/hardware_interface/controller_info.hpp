@@ -35,6 +35,8 @@ struct ControllerInfo
 
   /// List of claimed interfaces by the controller.
   std::vector<std::string> claimed_interfaces;
+
+  int update_rate;
 };
 
 }  // namespace hardware_interface

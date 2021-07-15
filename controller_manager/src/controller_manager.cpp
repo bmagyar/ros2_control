@@ -1124,6 +1124,10 @@ controller_interface::return_type ControllerManager::update()
     // https://github.com/ros-controls/ros2_control/issues/153
     if (is_controller_running(*loaded_controller.c)) {
       auto controller_ret = loaded_controller.c->update();
+
+      int THIS_CONTROLLER_UPDATE_RATE = loaded_controller.info.update_rate;
+      int THIS_CONTROLLER_UPDATE_RATE = loaded_controller.c->get_update_rate();
+
       if (controller_ret != controller_interface::return_type::OK) {
         ret = controller_ret;
       }
