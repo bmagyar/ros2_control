@@ -22,7 +22,6 @@
 #include <vector>
 
 #include "transmission_interface/accessor.hpp"
-#include "transmission_interface/exception.hpp"
 #include "transmission_interface/transmission.hpp"
 
 namespace transmission_interface
